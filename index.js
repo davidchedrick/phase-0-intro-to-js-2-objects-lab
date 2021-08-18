@@ -1,28 +1,32 @@
-// Write your solution in this file!
 const employee = {
-    name: '',
-    streetAddress: ''
+    name: 'Sam',
+    streetAddress: '11 Broadway'
 };
 
-function  updateEmployeeWithKeyAndValue(employee, key, value){
-     return Object.assign({}, employee, {[key]: value})
+function  updateEmployeeWithKeyAndValue(obj, key, value){
+    return {
+        ...obj,
+        [key]: value,
+      };
+    }
+const newAdd = updateEmployeeWithKeyAndValue(employee, 'streetAddress', '12 Broadway');    
+
+function destructivelyUpdateEmployeeWithKeyAndValue(obj, key, value){
+    obj[key] = value; 
+    return obj;
 };
+const permAdd = destructivelyUpdateEmployeeWithKeyAndValue(employee, 'streetAddress', '12 Broadway');
 
-function destructivelyUpdateEmployeeWithKeyAndValue(employee, key, value){
-    return Object.assign( employee, {[key]: value})
+function deleteFromEmployeeByKey(obj, key, value){
+    return {
+        ...obj,
+        [key]: value,
+    };    
 };
+const deleteEmployee = updateEmployeeWithKeyAndValue(employee, 'name', '');   
 
-
-function deleteFromEmployeeByKey(employee, key){
-    const deleteEmplyee = Object.assign({}, employee)
-    delete deleteEmplyee[key]
-    return deleteEmplyee
+function destructivelyDeleteFromEmployeeByKey(obj, key, value){
+    obj[key] = value; 
+    return obj;
 };
-
-
-function destructivelyDeleteFromEmployeeByKey(employee, key){
-    const deleteEmplyee = Object.assign(employee)
-    delete deleteEmplyee[key]
-    return deleteEmplyee
-};
-
+const permName = destructivelyUpdateEmployeeWithKeyAndValue(employee, 'name', '');
